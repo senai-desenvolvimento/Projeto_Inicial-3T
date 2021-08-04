@@ -16,12 +16,12 @@ VALUES	(1, 'adm@adm.com', 'adm123'),
 GO
 
 INSERT INTO Salas(nomeSala, andar, metragem)
-VALUES	('Informática', '0', 10),
-		('Música', '0', 12.6),
-		('Matemática', '1', 8),
-		('Física', '1', 8),
-		('Biologia', '2', 8.3),
-		('Química', '2', 10);
+VALUES	('Informática', 0, 10),
+		('Música', 0, 12.6),
+		('Matemática', 1, 8),
+		('Física', 1, 8),
+		('Biologia', 2, 8.3),
+		('Química', 2, 10);
 GO
 
 INSERT INTO TiposEquipamentos(titulo)
