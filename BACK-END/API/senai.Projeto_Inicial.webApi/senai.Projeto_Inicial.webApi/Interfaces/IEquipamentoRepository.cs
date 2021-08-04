@@ -12,7 +12,7 @@ namespace senai.Projeto_Inicial.webApi.Interfaces
 
         Equipamento BuscarPorId(int id);
 
-        void Cadastrar(Equipamento novoEquipamento);
+        Equipamento Cadastrar(Equipamento novoEquipamento);
 
         void Atualizar(int id, Equipamento equipamentoAtualizado);
 

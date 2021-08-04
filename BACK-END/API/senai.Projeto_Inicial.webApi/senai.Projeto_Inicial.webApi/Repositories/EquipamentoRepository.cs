@@ -44,11 +44,13 @@ namespace senai.Projeto_Inicial.webApi.Repositories
             return ctx.Equipamentos.FirstOrDefault(c => c.IdEquipamento == id);
         }
 
-        public void Cadastrar(Equipamento novoEquipamento)
+        public Equipamento Cadastrar(Equipamento novoEquipamento)
         {
             ctx.Equipamentos.Add(novoEquipamento);
 
             ctx.SaveChanges();
+
+            return novoEquipamento;
         }
 
         public void Deletar(int id)

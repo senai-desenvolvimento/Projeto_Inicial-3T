@@ -29,8 +29,10 @@ namespace senai.Projeto_Inicial.webApi.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                // Okuma: optionsBuilder.UseSqlServer("Data Source=DESKTOP-4A3IQMH\\SQLEXPRESS; Initial Catalog=INICIAL_3DT; user id=sa; pwd=senai@132;");
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-KVKV9TT\\SA; Initial Catalog=INICIAL_3DT; user id=sa; pwd=senai@132;");
+                // Okuma:
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-4A3IQMH\\SQLEXPRESS; Initial Catalog=INICIAL_3DT; user id=sa; pwd=senai@132;");
+                // Lucas:
+                // optionsBuilder.UseSqlServer("Data Source=DESKTOP-KVKV9TT\\SA; Initial Catalog=INICIAL_3DT; user id=sa; pwd=senai@132;");
             }
         }
 
@@ -113,7 +115,8 @@ namespace senai.Projeto_Inicial.webApi.Context
 
             modelBuilder.Entity<SalasEquipamento>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.IdSalaEquipamento)
+                    .HasName("PK__SalasEqu__8D6051B877FC98CE");
 
                 entity.Property(e => e.DataEntrada)
                     .HasColumnType("date")

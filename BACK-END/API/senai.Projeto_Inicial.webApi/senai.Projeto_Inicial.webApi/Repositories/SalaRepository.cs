@@ -16,11 +16,24 @@ namespace senai.Projeto_Inicial.webApi.Repositories
         /// Atualiza sala
         /// </summary>
         /// <param name="sala">sala a ser atualizada</param>
-        public void Atualizar(Sala sala)
+        public void Atualizar(int id, Sala sala)
         {
-            Sala salaAntiga = ctx.Salas.Find(sala.IdSala);
+            Sala salaAntiga = ctx.Salas.Find(id);
 
-            salaAntiga = sala;
+            if (sala.NomeSala != null)
+            {
+                salaAntiga.NomeSala = sala.NomeSala;
+            }
+
+            if (sala.Andar != null)
+            {
+                salaAntiga.Andar = sala.Andar;
+            }
+
+            if (sala.Metragem != null)
+            {
+                salaAntiga.Metragem = sala.Metragem;
+            }
 
             ctx.Salas.Update(salaAntiga);
 
@@ -44,7 +57,7 @@ namespace senai.Projeto_Inicial.webApi.Repositories
         /// <param name="id">id do sala a ser excluida</param>
         public void Excluir(int id)
         {
-            Sala sala = ctx.Salas.Find(id);
+            Sala sala = ctx.Salas.FirstOrDefault(c => c.IdSala == id);
 
             ctx.Salas.Remove(sala);
 

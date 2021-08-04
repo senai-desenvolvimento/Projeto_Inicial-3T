@@ -54,8 +54,8 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         /// <param name="usuario">usuario com dados a serem atualizados</param>
         /// <returns>StatusCode 204 - NoContent</returns>
         //[Authorize(Roles = "1")]
-        [HttpPatch]
-        public IActionResult Patch(Usuario usuario)
+        [HttpPut]
+        public IActionResult Put(Usuario usuario)
         {
             _usuarioRepository.Atualizar(usuario);
 

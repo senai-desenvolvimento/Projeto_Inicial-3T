@@ -18,7 +18,7 @@ namespace senai.Projeto_Inicial.webApi.Controllers
     {
         private ISalaRepository _salaRepository { get; set; }
 
-        SalasController()
+        public SalasController()
         {
             _salaRepository = new SalaRepository();
         }
@@ -54,10 +54,10 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         /// <param name="sala">sala com dados a serem atualizados</param>
         /// <returns>StatusCode 204 - NoContent</returns>
         //[Authorize(Roles = "1")]
-        [HttpPatch]
-        public IActionResult Patch(Sala sala)
+        [HttpPut]
+        public IActionResult Put(int id, Sala sala)
         {
-            _salaRepository.Atualizar(sala);
+            _salaRepository.Atualizar(id, sala);
 
             return StatusCode(204);
         }

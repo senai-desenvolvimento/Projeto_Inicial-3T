@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.Projeto_Inicial.webApi.Domains;
+using senai.Projeto_Inicial.webApi.DTO;
 using senai.Projeto_Inicial.webApi.Interfaces;
 using senai.Projeto_Inicial.webApi.Repositories;
 using System;
@@ -17,10 +18,13 @@ namespace senai.Projeto_Inicial.webApi.Controllers
     public class EquipamentoController : ControllerBase
     {
         private IEquipamentoRepository _equipamentoRepository { get; set; }
+        private ISalaEquipamentoRepository _salaEquipamentoRepository { get; set; }
         
         public EquipamentoController()
         {
             _equipamentoRepository = new EquipamentoRepository();
+
+            _salaEquipamentoRepository = new SalaEquipamentoRepository();
         }
 
         //[Authorize]
@@ -55,12 +59,32 @@ namespace senai.Projeto_Inicial.webApi.Controllers
 
         //[Authorize]
         [HttpPost]
-        public IActionResult Post(Equipamento novoEquipamento)
+        public IActionResult Post(EquipamentoSalaDTO novoEquipamentoDTO)
         {
             try
             {
-                _equipamentoRepository.Cadastrar(novoEquipamento);
+                var novoEquipamento = new Equipamento
+                {
+                    IdTipoEquipamento = novoEquipamentoDTO.IdTipoEquipamento,
+                    NomeEquipamento = novoEquipamentoDTO.NomeEquipamento,
+                    NomeMarca = novoEquipamentoDTO.NomeMarca,
+                    Descricao = novoEquipamentoDTO.Descricao,
+                    NumeroPatrimonio = novoEquipamentoDTO.NumeroPatrimonio,
+                    NumeroSerie = novoEquipamentoDTO.NumeroSerie,
+                    Situacao = novoEquipamentoDTO.Situacao
+                };
 
+                 novoEquipamento = _equipamentoRepository.Cadastrar(novoEquipamento);
+
+                var novaSalaEquipamento = new SalasEquipamento
+                {
+                    IdSala = novoEquipamentoDTO.IdSala,
+                    IdEquipamento = novoEquipamento.IdEquipamento,
+                    DataEntrada = DateTime.Now
+                };
+
+                _salaEquipamentoRepository.Cadastrar(novaSalaEquipamento);
+                 
                 return StatusCode(201);
             }
             catch (Exception codErro)
@@ -73,7 +97,7 @@ namespace senai.Projeto_Inicial.webApi.Controllers
 
         //[Authorize]
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Equipamento equipamentoAtualizado)
+        public IActionResult Put(int id, Equipamento equipamentoAtualizado)
         {
             try
             {

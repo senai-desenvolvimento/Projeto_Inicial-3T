@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using senai.Projeto_Inicial.webApi.Domains;
+using senai.Projeto_Inicial.webApi.DTO;
 using senai.Projeto_Inicial.webApi.Interfaces;
 using senai.Projeto_Inicial.webApi.Repositories;
 using System;
@@ -21,7 +22,7 @@ namespace senai.Projeto_Inicial.webApi.Controllers
     {
         private IUsuarioRepository _usuarioRepository { get; set; }
 
-        LoginController()
+        public LoginController()
         {
             _usuarioRepository = new UsuarioRepository();
         }
@@ -32,7 +33,7 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         /// <param name="usuario">Usuario com email e senha</param>
         /// <returns>JWT</returns>
         [HttpPost]
-        public IActionResult Login(Usuario usuario)
+        public IActionResult Login(LoginDTO usuario)
         {
             try
             {
@@ -45,10 +46,10 @@ namespace senai.Projeto_Inicial.webApi.Controllers
 
                 var claims = new[]
                 {
-                    new Claim(JwtRegisteredClaimNames.Email, usuario.Email),
-                    new Claim(JwtRegisteredClaimNames.Jti, usuario.IdUsuario.ToString()),
-                    new Claim(ClaimTypes.Role, usuario.IdTipoUsuario.ToString()),
-                    new Claim("role", usuario.IdTipoUsuario.ToString())
+                    new Claim(JwtRegisteredClaimNames.Email, usuarioLogado.Email),
+                    new Claim(JwtRegisteredClaimNames.Jti, usuarioLogado.IdUsuario.ToString()),
+                    new Claim(ClaimTypes.Role, usuarioLogado.IdTipoUsuario.ToString()),
+                    new Claim("role", usuarioLogado.IdTipoUsuario.ToString())
                 };
 
                 var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("c6301348-6898-4548-be7c-060d61d6307e"));

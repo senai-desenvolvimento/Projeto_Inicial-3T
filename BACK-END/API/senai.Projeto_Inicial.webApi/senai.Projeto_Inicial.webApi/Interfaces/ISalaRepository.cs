@@ -24,7 +24,7 @@ namespace senai.Projeto_Inicial.webApi.Interfaces
         /// Atualiza sala
         /// </summary>
         /// <param name="sala">sala a ser atualizada</param>
-        void Atualizar(Sala sala);
+        void Atualizar(int id, Sala sala);
 
         /// <summary>
         /// Exclui sala
