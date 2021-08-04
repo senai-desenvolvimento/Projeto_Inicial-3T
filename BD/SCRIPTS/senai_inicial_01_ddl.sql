@@ -38,16 +38,19 @@ GO
 CREATE TABLE Equipamentos(
 	idEquipamento INT PRIMARY KEY IDENTITY,
 	idTipoEquipamento INT FOREIGN KEY REFERENCES TiposEquipamentos(idTipoEquipamento),
+	nomeEquipamento VARCHAR(200) NOT NULL,
 	nomeMarca VARCHAR(100) NOT NULL,
 	descricao VARCHAR(200) NOT NULL,
-	numeroPatrimonio INT UNIQUE NOT NULL,
-	numeroSerie INT UNIQUE NOT NULL,
+	numeroPatrimonio VARCHAR(10) UNIQUE NOT NULL,
+	numeroSerie VARCHAR(15) UNIQUE NOT NULL,
 	situacao BIT NOT NULL
 );
 GO
 
 CREATE TABLE SalasEquipamentos(
 	idSala INT FOREIGN KEY REFERENCES Salas(idSala),
-	idEquipamento INT FOREIGN KEY REFERENCES Equipamentos(idEquipamento)
+	idEquipamento INT FOREIGN KEY REFERENCES Equipamentos(idEquipamento),
+	dataEntrada DATE NOT NULL,
+	dataSaida DATE
 );
 GO
