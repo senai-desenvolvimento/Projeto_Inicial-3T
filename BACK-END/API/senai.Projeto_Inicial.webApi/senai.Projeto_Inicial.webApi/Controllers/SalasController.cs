@@ -14,64 +14,64 @@ namespace senai.Projeto_Inicial.webApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuariosController : ControllerBase
+    public class SalasController : ControllerBase
     {
-        private IUsuarioRepository _usuarioRepository { get; set; }
+        private ISalaRepository _salaRepository { get; set; }
 
-        UsuariosController()
+        SalasController()
         {
-            _usuarioRepository = new UsuarioRepository();
+            _salaRepository = new SalaRepository();
         }
 
         /// <summary>
-        /// Lista usuarios
+        /// Lista salas
         /// </summary>
-        /// <returns>Lista de usuarios</returns>
-        //[Authorize(Roles = "1")]
+        /// <returns>Lista de salas</returns>
+        //[Authorize]
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_usuarioRepository.Listar());
+            return Ok(_salaRepository.Listar());
         }
 
         /// <summary>
-        /// Cria usuario
+        /// Cria sala
         /// </summary>
-        /// <param name="usuario">usuario a ser criado</param>
+        /// <param name="sala">sala a ser criada</param>
         /// <returns>Statuscode 201 - Created</returns>
         //[Authorize(Roles = "1")]
         [HttpPost]
-        public IActionResult Post(Usuario usuario)
+        public IActionResult Post(Sala sala)
         {
-            _usuarioRepository.Criar(usuario);
+            _salaRepository.Criar(sala);
 
             return StatusCode(201);
         }
 
         /// <summary>
-        /// Atualiza senha do usuario
+        /// Atualiza sala
         /// </summary>
-        /// <param name="usuario">usuario com dados a serem atualizados</param>
+        /// <param name="sala">sala com dados a serem atualizados</param>
         /// <returns>StatusCode 204 - NoContent</returns>
         //[Authorize(Roles = "1")]
         [HttpPatch]
-        public IActionResult Patch(Usuario usuario)
+        public IActionResult Patch(Sala sala)
         {
-            _usuarioRepository.Atualizar(usuario);
+            _salaRepository.Atualizar(sala);
 
             return StatusCode(204);
         }
 
         /// <summary>
-        /// Exclui usuario
+        /// Exclui sala
         /// </summary>
-        /// <param name="usuario">id do usuario a ser excluído</param>
+        /// <param name="sala">id do sala a ser excluída</param>
         /// <returns>StatusCode 204 - NoContent</returns>
         //[Authorize(Roles = "1")]
         [HttpDelete]
-        public IActionResult Delete(Usuario usuario)
+        public IActionResult Delete(Sala sala)
         {
-            _usuarioRepository.Excluir(usuario.IdUsuario);
+            _salaRepository.Excluir(sala.IdSala);
 
             return StatusCode(204);
         }

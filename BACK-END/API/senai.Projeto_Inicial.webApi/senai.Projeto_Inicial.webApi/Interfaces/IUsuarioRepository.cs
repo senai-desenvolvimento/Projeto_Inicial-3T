@@ -37,7 +37,7 @@ namespace senai.Projeto_Inicial.webApi.Interfaces
         /// </summary>
         /// <param name="email"></param>
         /// <param name="senha"></param>
-        /// <returns></returns>
+        /// <returns>usuario se encontrado</returns>
         Usuario Login(string email, string senha);
     }
 }

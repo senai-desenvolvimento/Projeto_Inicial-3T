@@ -66,7 +66,7 @@ namespace senai.Projeto_Inicial.webApi.Repositories
         /// </summary>
         /// <param name="email"></param>
         /// <param name="senha"></param>
-        /// <returns></returns>
+        /// <returns>usuario se encontrado</returns>
         public Usuario Login(string email, string senha)
         {
             Usuario usuario = ctx.Usuarios.FirstOrDefault(x => x.Email == email && x.Senha == senha);

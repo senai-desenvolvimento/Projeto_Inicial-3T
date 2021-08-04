@@ -31,7 +31,6 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         /// </summary>
         /// <param name="usuario">Usuario com email e senha</param>
         /// <returns>JWT</returns>
-        [Authorize]
         [HttpPost]
         public IActionResult Login(Usuario usuario)
         {
