@@ -7,13 +7,13 @@ using senai.Projeto_Inicial.webApi.Domains;
 
 namespace senai.Projeto_Inicial.webApi.Context
 {
-    public partial class Context : DbContext
+    public partial class ProjetoInicialContext : DbContext
     {
-        public Context()
+        public ProjetoInicialContext()
         {
         }
 
-        public Context(DbContextOptions<Context> options)
+        public ProjetoInicialContext(DbContextOptions<ProjetoInicialContext> options)
             : base(options)
         {
         }
