@@ -9,7 +9,8 @@
     height: 100%;
     padding: 80px 0px 0px 0px;
     padding-left: 65px;
-    background-color: #f2f2f2;
+    /* background-color: #f2f2f2; */
+    background: linear-gradient(171.37deg, #1B415C -1.27%, #3581B8 134.26%);;
 }
 
 .menu-controle-content{
@@ -21,7 +22,7 @@
 }
 
 .menu-controle-text-title{
-    color: #344A58;
+    color: #fafafa;
     font-size: 24px;
     text-transform: uppercase;
     font-weight: 800;
@@ -42,14 +43,28 @@
 .menu-controle-pages-title{
     font-size: 20px;
     font-weight: 700;
-    color: #344A58;
+    color: #B2AA8E;
+    user-select: none;
+}
+
+.menu-controle-pages-title-disable{
+    font-size: 20px;
+    font-weight: 700;
+    color: #fafafa;
     user-select: none;
 }
 
 .menu-controle-pages-span{
     font-size: 18px;
     font-weight: 700;
-    color: #999;
+    color: #B2AA8E;
+    user-select: none;
+}
+
+.menu-controle-pages-span-disable{
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFF;
     user-select: none;
 }
 
@@ -78,7 +93,7 @@
     position: absolute;
     width: 5px;
     height: 60px;
-    background-color: #38d39f;
+    background-color: #B2AA8E;
     transition: .1s ease;
     user-select: none;
 }
@@ -109,7 +124,7 @@
     position: absolute;
     width: 5px;
     height: 60px;
-    background-color: #d0d0d0;
+    background-color: #FFF;
     transition: .1s ease;
     user-select: none;
 }
@@ -119,14 +134,14 @@
     position: absolute;
     width: 5px;
     height: 60px;
-    background-color: #999;
+    background-color: #B2AA8E;
     user-select: none;
 }
 
 .menu-controle-logout-btn-title{
     font-size: 20px;
     font-weight: 700;
-    color: #344A58;
+    color: #fafafa;
     text-transform: uppercase;
 }
 
@@ -149,7 +164,7 @@
     position: absolute;
     width: 5px;
     height: 40px;
-    background-color: #d0d0d0;
+    background-color: #fff;
     transition: .1s ease;
 }
 
@@ -158,7 +173,7 @@
     position: absolute;
     width: 5px;
     height: 40px;
-    background-color: #999;
+    background-color: #B2AA8E;
 }
 
 .menu-controle-logout-btn img{
