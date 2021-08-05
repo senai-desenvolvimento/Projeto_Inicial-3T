@@ -71,7 +71,7 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         /// <param name="sala">sala com dados a serem atualizados</param>
         /// <returns>StatusCode 204 - NoContent</returns>
         //[Authorize(Roles = "1")]
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult Put(int id, Sala sala)
         {
             try
