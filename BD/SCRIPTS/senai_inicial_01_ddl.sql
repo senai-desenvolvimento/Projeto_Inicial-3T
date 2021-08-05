@@ -48,6 +48,7 @@ CREATE TABLE Equipamentos(
 GO
 
 CREATE TABLE SalasEquipamentos(
+	idSalasEquipamento INT PRIMARY KEY IDENTITY,
 	idSala INT FOREIGN KEY REFERENCES Salas(idSala),
 	idEquipamento INT FOREIGN KEY REFERENCES Equipamentos(idEquipamento),
 	dataEntrada DATE NOT NULL,
