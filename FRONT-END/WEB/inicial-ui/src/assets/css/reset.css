@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&family=Righteous&display=swap');
+
+
+/* RESET */
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+select{
+    border: none;
+    outline: none;
+}
+
+/* reseta algumas informações */
+body, h1, h2, p, ul, li, a{
+    /* tira as margens padrão (deixa as coisas mais coladas) */
+    margin: 0px;
+    padding: 0px;
+}
+
+/* atribui novas configurações para o body */
+body{
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: #222222;
+    background-color: #fafafa;
+}
+
+/* aqui remove os estilos das listas */
+ul{
+    list-style: none;
+}
+
+/* aqui remove o text-decoration */
+a{
+    text-decoration: none;
+}
+
+/* atribui novas configurações para as img */
+img{
+    /* faz com que todas as imagens sejam display: block */
+    display: block;
+    /* faz com que tenham uma largura máxima de 100% para que elas não estourem o container (ajuda na responsividade) */
+    max-width: 100%;
+}
+
+/* atribui à todas as tags do site um nova configuração */
+*{
+    /* não entendi */
+    box-sizing: border-box;
+}
