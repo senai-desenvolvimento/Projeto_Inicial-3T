@@ -1,13 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.salaDeAula.webApi.Domains;
 using senai.salaDeAula.webApi.Interfaces;
 using senai.salaDeAula.webApi.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace senai.salaDeAula.webApi.Controllers
 {
@@ -21,7 +17,7 @@ namespace senai.salaDeAula.webApi.Controllers
     //Define que é um controlador de API
     [ApiController]
 
-    /*[Authorize(Roles = "1")]*/
+    [Authorize(Roles = "1")]
     public class ControleEquipamentoController : ControllerBase
     {
         private IControleEquipamentoRepository _controleEquipamentoRepository { get; set; }
