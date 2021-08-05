@@ -38,6 +38,13 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         }
 
         //[Authorize]
+        [HttpPost]
+        public IActionResult Post( [FromBody] int idEquipamento)
+        {
+
+        }
+
+        //[Authorize]
         [HttpGet("{id}")]
         public IActionResult GetByIdSala(int id)
         {
@@ -51,5 +58,8 @@ namespace senai.Projeto_Inicial.webApi.Controllers
                 return BadRequest(ex);
             }
         }
+
+        //[Authorize]
+        []
     }
 }

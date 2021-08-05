@@ -31,7 +31,15 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_salaRepository.Listar());
+            try
+            {
+                return Ok(_salaRepository.Listar());
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         /// <summary>
@@ -43,9 +51,18 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         [HttpPost]
         public IActionResult Post(Sala sala)
         {
-            _salaRepository.Criar(sala);
+            try
+            {
+                _salaRepository.Criar(sala);
 
-            return StatusCode(201);
+                return StatusCode(201);
+            }
+
+            catch (Exception codErro)
+            {
+                return BadRequest(codErro);
+
+            }
         }
 
         /// <summary>
@@ -57,9 +74,18 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         [HttpPut]
         public IActionResult Put(int id, Sala sala)
         {
-            _salaRepository.Atualizar(id, sala);
+            try
+            {
+                _salaRepository.Atualizar(id, sala);
 
-            return StatusCode(204);
+                return StatusCode(204);
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         /// <summary>
@@ -71,9 +97,18 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         [HttpDelete]
         public IActionResult Delete(Sala sala)
         {
-            _salaRepository.Excluir(sala.IdSala);
+            try
+            {
+                _salaRepository.Excluir(sala.IdSala);
 
-            return StatusCode(204);
+                return StatusCode(204);
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
     }
 }

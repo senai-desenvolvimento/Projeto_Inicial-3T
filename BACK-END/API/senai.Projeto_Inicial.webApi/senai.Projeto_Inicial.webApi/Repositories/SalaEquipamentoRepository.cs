@@ -1,4 +1,5 @@
-﻿using senai.Projeto_Inicial.webApi.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using senai.Projeto_Inicial.webApi.Context;
 using senai.Projeto_Inicial.webApi.Domains;
 using senai.Projeto_Inicial.webApi.Interfaces;
 using System;
@@ -38,6 +39,12 @@ namespace senai.Projeto_Inicial.webApi.Repositories
         public IEnumerable<SalasEquipamento> ListarEquipamentosNaSala(int idSala)
         {
             return ctx.SalasEquipamentos.ToList().Where(e => e.IdSala == idSala && e.DataSaida == null);
+        }
+
+        public List<SalasEquipamento> ListarEquipamentos()
+        {
+            return ctx.SalasEquipamentos
+                .Include(e => e.IdEquipamentoNavigation).ToList();
         }
     }
 }
