@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using senai.salaDeAula.webApi.Domains;
 using senai.salaDeAula.webApi.Interfaces;
 using senai.salaDeAula.webApi.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace senai.salaDeAula.webApi.Controllers
 {
@@ -19,6 +16,8 @@ namespace senai.salaDeAula.webApi.Controllers
 
     //Define que é um controlador de API
     [ApiController]
+
+    [Authorize(Roles = "1")]
     public class EquipamentosController : ControllerBase
     {
         private IEquipamentoRepository _equipamentoRepository { get; set; }
@@ -26,6 +25,62 @@ namespace senai.salaDeAula.webApi.Controllers
         public EquipamentosController()
         {
             _equipamentoRepository = new EquipamentoRepository();
+        }
+
+        [HttpGet]
+        public IActionResult GetConsultas()
+        {
+            try
+            {
+                return Ok(_equipamentoRepository.Listar());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            try
+            {
+                return Ok(_equipamentoRepository.BuscarPorId(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Post(Equipamento novoEquipamento)
+        {
+            try
+            {
+                _equipamentoRepository.Cadastrar(novoEquipamento);
+
+                return StatusCode(201);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Equipamento controleEquipamentoAtualizado)
+        {
+            try
+            {
+                _equipamentoRepository.AtualizarPorId(id, controleEquipamentoAtualizado);
+
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         [HttpPatch("{id}")]
@@ -45,6 +100,21 @@ namespace senai.salaDeAula.webApi.Controllers
             catch (Exception ex)
             {
                 return BadRequest();
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _equipamentoRepository.Deletar(id);
+
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
             }
         }
     }

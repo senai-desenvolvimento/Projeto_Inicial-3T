@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using senai.salaDeAula.webApi.Domains;
 using senai.salaDeAula.webApi.Interfaces;
 using senai.sp_medicals.webApi.Repositories;
@@ -15,6 +16,8 @@ namespace senai.salaDeAula.webApi.Controllers
 
     //Define que é um controlador de API
     [ApiController]
+
+    [Authorize(Roles = "1")]
     public class TiposUsuariosController : ControllerBase
     {
         private ITipoUsuarioRepository _tipoUsuarioRepository { get; set; }

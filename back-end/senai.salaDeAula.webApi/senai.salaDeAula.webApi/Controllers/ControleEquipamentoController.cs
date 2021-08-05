@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.salaDeAula.webApi.Domains;
 using senai.salaDeAula.webApi.Interfaces;
 using senai.salaDeAula.webApi.Repositories;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace senai.salaDeAula.webApi.Controllers
 {
@@ -11,29 +15,30 @@ namespace senai.salaDeAula.webApi.Controllers
     [Produces("application/json")]
 
     //Define que a rota da requisição será no formato dominió/api/nomeController
-    //ex: http://localhost:5000/api/sala
+    //ex: http://localhost:5000/api/controleequipamento
     [Route("api/[controller]")]
 
     //Define que é um controlador de API
     [ApiController]
 
-    [Authorize(Roles = "1")]
-    public class SalaController : ControllerBase
+    /*[Authorize(Roles = "1")]*/
+    public class ControleEquipamentoController : ControllerBase
     {
-        private ISalaRepository _salaRepository { get; set; }
+        private IControleEquipamentoRepository _controleEquipamentoRepository { get; set; }
 
-        public SalaController()
+        public ControleEquipamentoController()
         {
-            _salaRepository = new SalaRepository();
+            _controleEquipamentoRepository = new ControleEquipamentoRepository();
         }
 
         [HttpGet]
-        public IActionResult GetRooms()
+        public IActionResult GetConsultas()
         {
             try
             {
-                return Ok(_salaRepository.Listar());
-            }catch (Exception ex)
+                return Ok(_controleEquipamentoRepository.Listar());
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex);
             }
@@ -44,7 +49,7 @@ namespace senai.salaDeAula.webApi.Controllers
         {
             try
             {
-                return Ok(_salaRepository.BuscarPorId(id));
+                return Ok(_controleEquipamentoRepository.BuscarPorId(id));
             }
             catch (Exception ex)
             {
@@ -53,11 +58,11 @@ namespace senai.salaDeAula.webApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(Sala novaSala)
+        public IActionResult Post(ControleEquipamento novoEquipamento)
         {
             try
             {
-                _salaRepository.Cadastrar(novaSala);
+                _controleEquipamentoRepository.Cadastrar(novoEquipamento);
 
                 return StatusCode(201);
             }
@@ -68,11 +73,11 @@ namespace senai.salaDeAula.webApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Sala salaAtualizada)
+        public IActionResult Put(int id, ControleEquipamento controleEquipamentoAtualizado)
         {
             try
             {
-                _salaRepository.AtualizarPorId(id, salaAtualizada);
+                _controleEquipamentoRepository.AtualizarPorId(id, controleEquipamentoAtualizado);
 
                 return StatusCode(204);
             }
@@ -87,7 +92,7 @@ namespace senai.salaDeAula.webApi.Controllers
         {
             try
             {
-                _salaRepository.Deletar(id);
+                _controleEquipamentoRepository.Deletar(id);
 
                 return StatusCode(204);
             }

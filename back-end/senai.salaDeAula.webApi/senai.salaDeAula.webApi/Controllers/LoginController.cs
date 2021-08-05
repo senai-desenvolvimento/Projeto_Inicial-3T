@@ -57,17 +57,17 @@ namespace senai.hroads.webApi_.Controllers
             };
 
             // Define a chave de acesso ao token
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("medicals-chave-autenticacao"));
+            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("saladeaula-chave-autenticacao"));
 
             // Define as credenciais do token - Header
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             // Define a composição do token
             var token = new JwtSecurityToken(
-                issuer: "medicals.webApi",                  // emissor do token
-                audience: "medicals.webApi",               // destinatário do token
+                issuer: "saladeaula.webApi",                  // emissor do token
+                audience: "saladeaula.webApi",               // destinatário do token
                 claims: claims,                         // dados definidos acima (linha 59)
-                expires: DateTime.Now.AddMinutes(5),   // tempo de expiração
+                expires: DateTime.Now.AddMinutes(15),   // tempo de expiração
                 signingCredentials: creds             // credenciais do token
             );
 
