@@ -26,6 +26,8 @@ namespace senai.Projeto_Inicial.webApi.Repositories
 
         public void Cadastrar(SalasEquipamento novaTransferencia)
         {
+            novaTransferencia.DataEntrada = DateTime.Now;
+
             ctx.SalasEquipamentos.Add(novaTransferencia);
 
             ctx.SaveChanges();
@@ -38,13 +40,60 @@ namespace senai.Projeto_Inicial.webApi.Repositories
 
         public IEnumerable<SalasEquipamento> ListarEquipamentosNaSala(int idSala)
         {
-            return ctx.SalasEquipamentos.ToList().Where(e => e.IdSala == idSala && e.DataSaida == null);
+            return ctx.SalasEquipamentos
+                .Where(e => e.IdSala == idSala && e.DataSaida == null)
+                .Select(e => new SalasEquipamento() 
+                { 
+                    DataEntrada = e.DataEntrada,
+
+                    IdEquipamentoNavigation = new Equipamento()
+                    {
+                        IdEquipamento = e.IdEquipamentoNavigation.IdEquipamento,
+                        NomeEquipamento = e.IdEquipamentoNavigation.NomeEquipamento,
+                        NomeMarca = e.IdEquipamentoNavigation.NomeMarca,
+                        Descricao = e.IdEquipamentoNavigation.Descricao,
+                        NumeroPatrimonio = e.IdEquipamentoNavigation.NumeroPatrimonio,
+                        NumeroSerie = e.IdEquipamentoNavigation.NumeroSerie,
+                        Situacao = e.IdEquipamentoNavigation.Situacao,
+
+                        IdTipoEquipamentoNavigation = new TiposEquipamento()
+                        {
+                            Titulo = e.IdEquipamentoNavigation.IdTipoEquipamentoNavigation.Titulo
+                        }
+                    }
+                });
         }
 
         public List<SalasEquipamento> ListarEquipamentos()
         {
             return ctx.SalasEquipamentos
-                .Include(e => e.IdEquipamentoNavigation).ToList();
+                .Where(e => e.DataSaida == null)
+                .Select(e => new SalasEquipamento()
+                {
+                    DataEntrada = e.DataEntrada,
+
+                    IdEquipamentoNavigation = new Equipamento()
+                    {
+                        IdEquipamento = e.IdEquipamentoNavigation.IdEquipamento,
+                        NomeEquipamento = e.IdEquipamentoNavigation.NomeEquipamento,
+                        NomeMarca = e.IdEquipamentoNavigation.NomeMarca,
+                        Descricao= e.IdEquipamentoNavigation.Descricao,
+                        NumeroPatrimonio = e.IdEquipamentoNavigation.NumeroPatrimonio,
+                        NumeroSerie = e.IdEquipamentoNavigation.NumeroSerie,
+                        Situacao = e.IdEquipamentoNavigation.Situacao,
+
+                        IdTipoEquipamentoNavigation = new TiposEquipamento()
+                        {
+                            Titulo = e.IdEquipamentoNavigation.IdTipoEquipamentoNavigation.Titulo
+                        }
+                    },
+
+                    IdSalaNavigation = new Sala()
+                    {
+                        NomeSala = e.IdSalaNavigation.NomeSala
+                    }
+                })
+                .ToList();
         }
     }
 }

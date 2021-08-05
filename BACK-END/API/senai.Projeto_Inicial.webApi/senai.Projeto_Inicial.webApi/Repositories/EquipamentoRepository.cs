@@ -62,8 +62,6 @@ namespace senai.Projeto_Inicial.webApi.Repositories
 
         public List<Equipamento> Listar()
         {
-            var listaEquipamentos = from e in ctx.Equipamentos 
-                                    join e in ctx.SalasEquipamentos
             return ctx.Equipamentos.ToList();
         }
     }

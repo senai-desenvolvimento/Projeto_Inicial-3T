@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using senai.Projeto_Inicial.webApi.Domains;
 using senai.Projeto_Inicial.webApi.Interfaces;
 using senai.Projeto_Inicial.webApi.Repositories;
 using System;
@@ -28,7 +29,7 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         {
             try
             {
-                return Ok(_salaEquipamentoRepository.Listar().OrderBy(c => c.IdSalaEquipamento));
+                return Ok(_salaEquipamentoRepository.Listar().OrderBy(c => c.IdSalasEquipamento));
             }
             catch (Exception ex)
             {
@@ -39,9 +40,20 @@ namespace senai.Projeto_Inicial.webApi.Controllers
 
         //[Authorize]
         [HttpPost]
-        public IActionResult Post( [FromBody] int idEquipamento)
+        public IActionResult Post(SalasEquipamento salaEquipamento)
         {
+            try
+            {
+                _salaEquipamentoRepository.Atualizar(salaEquipamento);
 
+                _salaEquipamentoRepository.Cadastrar(salaEquipamento);
+
+                return StatusCode(201);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            };
         }
 
         //[Authorize]
@@ -60,6 +72,18 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         }
 
         //[Authorize]
-        []
+        [HttpGet("/Equipamentos")]
+        public IActionResult GetEquipamentos()
+        {
+            try
+            {
+                return Ok(_salaEquipamentoRepository.ListarEquipamentos().OrderBy(e => e.IdEquipamento));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
+        }
     }
 }

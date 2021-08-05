@@ -15,5 +15,7 @@ namespace senai.Projeto_Inicial.webApi.Interfaces
         void Atualizar(SalasEquipamento salasEquipamentoAtualizado);
 
         IEnumerable<SalasEquipamento> ListarEquipamentosNaSala(int idSala);
+
+        List<SalasEquipamento> ListarEquipamentos();
     }
 }
