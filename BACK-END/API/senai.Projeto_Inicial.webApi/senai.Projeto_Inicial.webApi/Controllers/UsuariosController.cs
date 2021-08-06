@@ -6,6 +6,7 @@ using senai.Projeto_Inicial.webApi.Interfaces;
 using senai.Projeto_Inicial.webApi.Repositories;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ namespace senai.Projeto_Inicial.webApi.Controllers
     {
         private IUsuarioRepository _usuarioRepository { get; set; }
 
-        UsuariosController()
+        public UsuariosController()
         {
             _usuarioRepository = new UsuarioRepository();
         }
@@ -57,6 +58,8 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         [HttpPut]
         public IActionResult Put(Usuario usuario)
         {
+            usuario.IdUsuario = Convert.ToInt32(HttpContext.User.Claims.First(x => x.Type == JwtRegisteredClaimNames.Jti).Value);
+
             _usuarioRepository.Atualizar(usuario);
 
             return StatusCode(204);
@@ -68,10 +71,10 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         /// <param name="usuario">id do usuario a ser excluído</param>
         /// <returns>StatusCode 204 - NoContent</returns>
         //[Authorize(Roles = "1")]
-        [HttpDelete]
-        public IActionResult Delete(Usuario usuario)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
-            _usuarioRepository.Excluir(usuario.IdUsuario);
+            _usuarioRepository.Excluir(id);
 
             return StatusCode(204);
         }

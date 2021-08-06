@@ -17,5 +17,9 @@ namespace senai.Projeto_Inicial.webApi.Interfaces
         IEnumerable<SalasEquipamento> ListarEquipamentosNaSala(int idSala);
 
         List<SalasEquipamento> ListarEquipamentos();
+
+        void DeletarEquipamento(int id);
+
+        void Deletar(int id);
     }
 }

@@ -28,6 +28,8 @@ namespace senai.Projeto_Inicial.webApi.Repositories
         {
             novaTransferencia.DataEntrada = DateTime.Now;
 
+            SalasEquipamento a = new SalasEquipamento();
+
             ctx.SalasEquipamentos.Add(novaTransferencia);
 
             ctx.SaveChanges();
@@ -94,6 +96,34 @@ namespace senai.Projeto_Inicial.webApi.Repositories
                     }
                 })
                 .ToList();
+        }
+
+        public void DeletarEquipamento(int id)
+        {
+            bool item = true;
+            while (item == true)
+            {
+                SalasEquipamento salasEquipamento = ctx.SalasEquipamentos.FirstOrDefault(x => x.IdEquipamento == id);
+                if (salasEquipamento == null)
+                {
+                    item = false;
+                }
+                else 
+                {
+                    ctx.SalasEquipamentos.Remove(salasEquipamento);
+                    ctx.SaveChanges();
+                }
+            }
+
+        }
+
+        public void Deletar(int id)
+        {
+            SalasEquipamento salasEquipamento = ctx.SalasEquipamentos.Find(id);
+
+            ctx.SalasEquipamentos.Remove(salasEquipamento);
+
+            ctx.SaveChanges();
         }
     }
 }

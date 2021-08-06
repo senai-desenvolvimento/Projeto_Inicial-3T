@@ -58,7 +58,12 @@ namespace senai.Projeto_Inicial.webApi.Repositories
         /// <returns>Lista de Usuarios</returns>
         public List<Usuario> Listar()
         {
-            return ctx.Usuarios.Include(x => x.IdTipoUsuarioNavigation).ToList();
+            return ctx.Usuarios.Include(x => x.IdTipoUsuarioNavigation).Select(x => new Usuario{
+                Email = x.Email,
+                Senha = x.Senha,
+                IdUsuario = x.IdUsuario,
+                IdTipoUsuario = x.IdTipoUsuario
+            }).ToList();
         }
 
         /// <summary>

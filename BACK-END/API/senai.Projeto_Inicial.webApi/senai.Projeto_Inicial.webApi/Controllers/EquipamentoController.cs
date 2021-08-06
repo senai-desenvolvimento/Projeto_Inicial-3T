@@ -117,6 +117,7 @@ namespace senai.Projeto_Inicial.webApi.Controllers
         {
             try
             {
+                _salaEquipamentoRepository.DeletarEquipamento(id);
                 _equipamentoRepository.Deletar(id);
                 return StatusCode(200);
             }
