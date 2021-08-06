@@ -1,0 +1,723 @@
+{
+	"info": {
+		"_postman_id": "6bde348f-9f96-47c3-81c0-205bd5ee71ef",
+		"name": "SalaDeAula",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "tiposusuarios",
+			"item": [
+				{
+					"name": "tiposusuarios.listartodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/tiposusuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tiposusuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiposusuarios.cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeTipoUsuario\" : \"Teste02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tiposusuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tiposusuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiposusuarios.atualizarporid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeTipoUsuario\" : \"luana linda\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tiposusuarios/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tiposusuarios",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiposusuarios.buscarporid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/tiposusuarios/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tiposusuarios",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiposusuarios.deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/tiposusuarios/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tiposusuarios",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sala",
+			"item": [
+				{
+					"name": "sala.listartodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/sala",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"sala"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sala.buscarporid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/sala/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"sala",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sala.cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NomeSala\" : \"luanfaaa\",\r\n\r\n    \"Metragem\" : \"90 x 90 x 9f0\", \r\n\r\n    \"Andar\" : \"4º\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/sala",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"sala"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sala.atualizarporid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NomeSala\" : \"luanfadddddaa\",\r\n\r\n    \"Metragem\" : \"90 x 90 x 9f0\", \r\n\r\n    \"Andar\" : \"4º\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/sala/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"sala",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sala.deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/sala/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"sala",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"lalal@laljja.com\",\r\n    \"senha\" : \"lalala\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "usuarios",
+			"item": [
+				{
+					"name": "usuarios.listartodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuarios.buscarporid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuarios.cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeUsuario\" : \"lalalalla\",\r\n    \"idTipoUsuario\" : 1,\r\n    \"email\" : \"lalal@lala.com\",\r\n    \"senha\" : \"lalala\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuarios.atualizarporid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeUsuario\" : \"luana\",\r\n    \"idTipoUsuario\" : 1,\r\n    \"email\" : \"lalal@laljja.com\",\r\n    \"senha\" : \"lalala\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuarios.deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "equipamentos",
+			"item": [
+				{
+					"name": "equipamentos.listartodos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGFsQGxhbGpqYS5jb20iLCJqdGkiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsInJvbGUiOiIxIiwibmFtZSI6ImxhbGFsQGxhbGpqYS5jb20iLCJleHAiOjE2MjgxOTE5MzcsImlzcyI6InNhbGFkZWF1bGEud2ViQXBpIiwiYXVkIjoic2FsYWRlYXVsYS53ZWJBcGkifQ.FUVxPt4geIR3SjfHD1P-T5klAfWk9XbqbKp1rLwVThU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/equipamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"equipamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "equipamentos.buscarporid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/equipamentos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"equipamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "equipamentos.cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeEquipamento\" : \"teste\",\r\n    \"tipoEquipamento\" : \"teste\",\r\n    \"marca\" : \"teste\",\r\n    \"numeroDeSerie\" : \"665566\",\r\n    \"descricao\" : \"teste\",\r\n    \"numeroPatrimonio\" : \"838383\", \r\n    \"estado\" : \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/equipamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"equipamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "equipamentos.atualizarporid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeEquipamento\" : \"testeeeeee\",\r\n    \"tipoEquipamento\" : \"testeeeeeeee\",\r\n    \"marca\" : \"testeeeeeeeee\",\r\n    \"numeroDeSerie\" : \"665566\",\r\n    \"descricao\" : \"testeeeeeeeeee\",\r\n    \"numeroPatrimonio\" : \"838383\", \r\n    \"estado\" : \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/equipamentos/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"equipamentos",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "equipamentos.deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/equipamentos/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"equipamentos",
+								"13"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "controleequipamento",
+			"item": [
+				{
+					"name": "controleequipamento.listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/controleequipamento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"controleequipamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "controleequipamento.buscarporid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/controleequipamento/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"controleequipamento",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "controleequipamento.cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSala\" : \"1\",\r\n    \"idEquipamento\" : \"2\",\r\n    \"dataEntrada\" : \"2018-06-18\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/controleequipamento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"controleequipamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "controleequipamento.atualizarporid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSala\" : \"2\",\r\n    \"idEquipamento\" : \"2\",\r\n    \"dataEntrada\" : \"2018-06-12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/controleequipamento/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"controleequipamento",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "controleequipamento.deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/controleequipamento/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"controleequipamento",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "equipamentos.trocarestado",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhbGFsQGxhbGpqYS5jb20iLCJqdGkiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsInJvbGUiOiIxIiwibmFtZSI6ImxhbGFsQGxhbGpqYS5jb20iLCJleHAiOjE2MjgxOTM2MDgsImlzcyI6InNhbGFkZWF1bGEud2ViQXBpIiwiYXVkIjoic2FsYWRlYXVsYS53ZWJBcGkifQ.CLlUTzdIAeLixUHgQ8_qOpUv99nifklyzxWBPcPafQU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Estado\" : \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/equipamentos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"equipamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
