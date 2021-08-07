@@ -111,13 +111,33 @@
 
 .equipamentos-card-text{
     /* background-color: red; */
-    width: 88%;
+    width: 90%;
     height: 100%;
     display: flex;
     align-items: center;
     text-align: start;
     justify-content: space-between;
-    margin-right: 50px;
+    margin-right: 20px;
+}
+
+.equipamentos-card-text-item{
+    width: 240px;
+    height: 55px;
+    /* background-color: yellow; */
+}
+
+.equipamentos-card-text-item:nth-child(2){
+    width: 150px;
+    height: 55px;
+    /* background-color: yellow; */
+}
+
+.equipamentos-card-text-item:nth-child(3){
+    width: 150px;
+    height: 55px;
+    /* background-color: yellow; */
+    display: flex;
+    align-items: center;
 }
 
 .equipamentos-card-text-title{

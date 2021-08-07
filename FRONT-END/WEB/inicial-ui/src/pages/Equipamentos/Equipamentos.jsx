@@ -16,266 +16,92 @@ import '../../assets/css/reset.css';
 
 // Imgs
 import icon from '../../assets/img/cards-lista-btn.svg';
-import sala from '../../assets/img/sala-modal-info-icon.svg';
 
 
 class Equipamentos extends Component {
     constructor(props){
         super(props);
         this.state = {
+            listaEquipamentos : [],
+
+            ordenar : false,
             isModalOpenCadastro : false,
             isModalOpenInfo : false,
             isModalOpenEditar : false
         }
     }
 
+    buscarEquipamentos = () => {
+        let URL = 'http://localhost:5000/api/equipamento';
+
+        axios(URL, {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('user-token')
+            }
+        })
+
+        .then(response => {
+            if(response.status === 200){
+                this.setState({ listaEquipamentos : response.data})
+            }
+        })
+
+        .catch(erro => {console.log(erro)})
+    }
+
+    componentDidMount(){
+        this.buscarEquipamentos();
+    }
+
     render() {
         return(
             <>
                 <MenuControle />
+                    
                 <div className="equipamentos-background">
                     <div className="equipamentos-btns">
                         <div className="equipamentos-btns-cadastro">
-                            <button onClick={() => this.setState({isModalOpenCadastro : true})}>Cadastrar Equipamento</button>
+                            <button type="button" onClick={() => this.setState({isModalOpenCadastro : true})}>Cadastrar Equipamento</button>
                         </div>
 
                         <div className="equipamentos-btns-ordenar">
-                            <button>Ordenar</button>
+                            <button onClick={() => {this.setState({ordenar : !this.state.ordenar}); this.buscarEquipamentos()}}>Ordenar</button>
                         </div>
                     </div>
 
                     <div className="equipamentos-lista">
 
-                        <div className="equipamentos-lista-card">
-                            <button onClick={() => this.setState({isModalOpenInfo : true})} className="equipamentos-card-click">
-                                <div className="equipamentos-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
+                    {
+                        this.state.ordenar && this.state.listaEquipamentos.sort((a, b) => b.idEquipamento - a.idEquipamento),
+                        this.state.listaEquipamentos.map(equipamento => {
+                            return(
+                                <div key={equipamento.idEquipamento} className="equipamentos-lista-card">
 
-                                <div className="equipamentos-card-text">
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Andar</span>
-                                        <p className="equipamentos-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Metragem</span>
-                                        <p className="equipamentos-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
+                                    <button onClick={() => this.setState({isModalOpenInfo : true})} className="equipamentos-card-click">
+                                        <div className="equipamentos-card-btn-lateral">
+                                            <img draggable="false" src={icon} />
+                                        </div>
 
-                        <div className="equipamentos-lista-card">
-                            <button className="equipamentos-card-click">
-                                <div className="equipamentos-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="equipamentos-card-text">
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Andar</span>
-                                        <p className="equipamentos-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Metragem</span>
-                                        <p className="equipamentos-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="equipamentos-lista-card">
-                            <button className="equipamentos-card-click">
-                                <div className="equipamentos-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="equipamentos-card-text">
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Andar</span>
-                                        <p className="equipamentos-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Metragem</span>
-                                        <p className="equipamentos-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="equipamentos-lista-card">
-                            <button className="equipamentos-card-click">
-                                <div className="equipamentos-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="equipamentos-card-text">
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Andar</span>
-                                        <p className="equipamentos-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Metragem</span>
-                                        <p className="equipamentos-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-                        
-                        <div className="equipamentos-lista-card">
-                            <button className="equipamentos-card-click">
-                                <div className="equipamentos-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="equipamentos-card-text">
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Andar</span>
-                                        <p className="equipamentos-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Metragem</span>
-                                        <p className="equipamentos-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="equipamentos-lista-card">
-                            <button className="equipamentos-card-click">
-                                <div className="equipamentos-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="equipamentos-card-text">
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Andar</span>
-                                        <p className="equipamentos-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Metragem</span>
-                                        <p className="equipamentos-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="equipamentos-lista-card">
-                            <button className="equipamentos-card-click">
-                                <div className="equipamentos-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="equipamentos-card-text">
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Andar</span>
-                                        <p className="equipamentos-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Metragem</span>
-                                        <p className="equipamentos-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="equipamentos-lista-card">
-                            <button className="equipamentos-card-click">
-                                <div className="equipamentos-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="equipamentos-card-text">
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Andar</span>
-                                        <p className="equipamentos-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Metragem</span>
-                                        <p className="equipamentos-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="equipamentos-lista-card">
-                            <button className="equipamentos-card-click">
-                                <div className="equipamentos-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="equipamentos-card-text">
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Andar</span>
-                                        <p className="equipamentos-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Metragem</span>
-                                        <p className="equipamentos-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="equipamentos-lista-card">
-                            <button className="equipamentos-card-click">
-                                <div className="equipamentos-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="equipamentos-card-text">
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Andar</span>
-                                        <p className="equipamentos-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="equipamentos-card-text-item">
-                                        <span className="equipamentos-card-text-title">Metragem</span>
-                                        <p className="equipamentos-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-                        
+                                        <div className="equipamentos-card-text">
+                                            <div className="equipamentos-card-text-item">
+                                                <span className="equipamentos-card-text-title">Equipamento</span>
+                                                <p className="salas-card-text-content">{equipamento.nomeEquipamento}</p>
+                                            </div>
+                                            <div className="equipamentos-card-text-item">
+                                                <span className="equipamentos-card-text-title">N° Patrimônio</span>
+                                                <p className="equipamentos-card-text-content">{equipamento.numeroPatrimonio}</p>
+                                            </div>
+                                            <div className="equipamentos-card-text-item">
+                                                {/* <span className="equipamentos-card-text-title">Metragem</span> */}
+                                                <p className="modal-card-background-info-equipamentos-content-item-sub-situacao">Indisponível</p>
+                                            </div>
+                                            
+                                        </div>
+                                    </button>
+                                </div>      
+                            )
+                        })
+                    }
 
                     </div>
                 </div>

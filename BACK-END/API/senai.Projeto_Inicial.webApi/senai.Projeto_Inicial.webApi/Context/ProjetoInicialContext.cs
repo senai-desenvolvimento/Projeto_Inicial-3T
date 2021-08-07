@@ -32,10 +32,12 @@ namespace senai.Projeto_Inicial.webApi.Context
                 // Okuma:
                 // optionsBuilder.UseSqlServer("Data Source=DESKTOP-4A3IQMH\\SQLEXPRESS; Initial Catalog=INICIAL_3DT; user id=sa; pwd=senai@132;");
                 // Lucas:
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-KVKV9TT\\SA; Initial Catalog=INICIAL_3DT; user id=sa; pwd=senai@132;");
+                // optionsBuilder.UseSqlServer("Data Source=DESKTOP-KVKV9TT\\SA; Initial Catalog=INICIAL_3DT; user id=sa; pwd=senai@132;");
                 // Senai:
                 // optionsBuilder.UseSqlServer("Data Source=DESKTOP-FF3MK0V\\SQLEXPRESS; Initial Catalog=INICIAL_3DT; user id=sa; pwd=Senai@132;");
 
+                // Apolinário:
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-HMTUR0P; initial catalog=INICIAL_3DT; user Id=SA; pwd=Soufoda2;");
             }
         }
 
