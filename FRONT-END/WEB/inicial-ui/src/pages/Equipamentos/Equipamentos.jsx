@@ -418,7 +418,6 @@ class Equipamentos extends Component {
                         </div>
                     </div>
                 </Modal>
-
             </>
         )
     }

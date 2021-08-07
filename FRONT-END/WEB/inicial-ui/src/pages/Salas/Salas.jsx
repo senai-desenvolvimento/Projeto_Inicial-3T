@@ -18,7 +18,6 @@ import '../../assets/css/reset.css';
 import icon from '../../assets/img/cards-lista-btn.svg';
 import sala from '../../assets/img/sala-modal-info-icon.svg';
 
-
 class Salas extends Component {
     constructor(props){
         super(props);
@@ -372,6 +371,7 @@ class Salas extends Component {
                         </div>
                     </div>
                 </Modal>
+
             </>
         )
     }
