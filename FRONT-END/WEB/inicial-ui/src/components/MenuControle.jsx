@@ -10,6 +10,7 @@ import '../assets/css/menuControle.css';
 // Imgs
 import sair from '../assets/img/menu-controle-sair.svg';
 
+
 class MenuControle extends Component{
     render() {
         const URL = window.location.pathname;
