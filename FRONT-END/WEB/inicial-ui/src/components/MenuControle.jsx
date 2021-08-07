@@ -25,15 +25,15 @@ class MenuControle extends Component{
                                 <div className="menu-controle-pages">
                                     <div className={URL === '/salas' ? 'menu-controle-pages-page' : 'menu-controle-pages-page-disable'}>
                                         <Link to="/salas">
-                                            <p className="menu-controle-pages-title">Salas</p>
-                                            <p className="menu-controle-pages-span">(6)</p>
+                                            <p className={URL === '/salas' ? 'menu-controle-pages-title' : 'menu-controle-pages-title-disable'}>Salas</p>
+                                            <p className={URL === '/salas' ? 'menu-controle-pages-span' : 'menu-controle-pages-span-disable'}>(6)</p>
                                         </Link>
                                     </div>
 
                                     <div className={URL === '/equipamentos' ? 'menu-controle-pages-page' : 'menu-controle-pages-page-disable'}>
                                         <Link to="/equipamentos">
-                                            <p className="menu-controle-pages-title">Equipamentos</p>
-                                            <p className="menu-controle-pages-span">(10)</p>
+                                            <p className={URL === '/equipamentos' ? 'menu-controle-pages-title' : 'menu-controle-pages-title-disable'}>Equipamentos</p>
+                                            <p className={URL === '/equipamentos' ? 'menu-controle-pages-span' : 'menu-controle-pages-span-disable'}>(10)</p>
                                         </Link>
                                     </div>
                                 </div>
