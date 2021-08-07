@@ -12,7 +12,6 @@ import Modal from '../../components/Modal';
 
 // Styles
 import '../../assets/css/salas.css';
-import '../../assets/css/modal.css';
 import '../../assets/css/reset.css';
 
 // Imgs
@@ -73,52 +72,6 @@ class Salas extends Component {
 
                         <div className="salas-lista-card">
                             <button onClick={() => this.setState({isModalOpenInfo : true})} className="salas-card-click">
-                                <div className="salas-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="salas-card-text">
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Andar</span>
-                                        <p className="salas-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Metragem</span>
-                                        <p className="salas-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="salas-lista-card">
-                            <button className="salas-card-click">
-                                <div className="salas-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="salas-card-text">
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Andar</span>
-                                        <p className="salas-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Metragem</span>
-                                        <p className="salas-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="salas-lista-card">
-                            <button className="salas-card-click">
                                 <div className="salas-card-btn-lateral">
                                     <img draggable="false" src={icon} />
                                 </div>
