@@ -6,6 +6,8 @@ export const parseJwt = () => {
     return JSON.parse(window.atob(payload));
 }
 
+export const expiredToken = () => Date(parseJwt.exp * 1000)
+
 export const logout = () => {
     localStorage.removeItem('user-token');
 }

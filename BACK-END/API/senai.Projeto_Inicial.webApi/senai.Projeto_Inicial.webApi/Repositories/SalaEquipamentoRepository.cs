@@ -69,6 +69,8 @@ namespace senai.Projeto_Inicial.webApi.Repositories
         public List<SalasEquipamento> ListarEquipamentos()
         {
             return ctx.SalasEquipamentos
+                .Include(x => x.IdEquipamentoNavigation)
+                .Include(x => x.IdSalaNavigation)
                 .Where(e => e.DataSaida == null)
                 .Select(e => new SalasEquipamento()
                 {
@@ -92,7 +94,10 @@ namespace senai.Projeto_Inicial.webApi.Repositories
 
                     IdSalaNavigation = new Sala()
                     {
-                        NomeSala = e.IdSalaNavigation.NomeSala
+                        IdSala = e.IdSalaNavigation.IdSala,
+                        NomeSala = e.IdSalaNavigation.NomeSala,
+                        Andar = e.IdSalaNavigation.Andar,
+                        Metragem = e.IdSalaNavigation.Metragem
                     }
                 })
                 .ToList();

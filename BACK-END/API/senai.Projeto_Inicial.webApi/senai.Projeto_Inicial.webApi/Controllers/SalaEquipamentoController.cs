@@ -96,7 +96,6 @@ namespace senai.Projeto_Inicial.webApi.Controllers
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex);
             }
         }
