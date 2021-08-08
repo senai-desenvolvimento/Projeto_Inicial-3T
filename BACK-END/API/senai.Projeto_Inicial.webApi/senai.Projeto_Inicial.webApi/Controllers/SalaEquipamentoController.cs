@@ -85,5 +85,18 @@ namespace senai.Projeto_Inicial.webApi.Controllers
                 return BadRequest(ex);
             }
         }
+
+        [HttpPost("{id}")]
+        public IActionResult Get(int id)
+        {
+            try
+            {
+                return Ok(_salaEquipamentoRepository.ListarEquipamentosNaSala(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 }

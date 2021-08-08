@@ -24,9 +24,89 @@ class Salas extends Component {
         this.state = {
             isModalOpenCadastro : false,
             isModalOpenInfo : false,
-            isModalOpenEditar : false
+            isModalOpenEditar : false,
+            sala : [],
+            equipamento : [],
+            salasEquipamento : [],
+            idInfo : 0
         }
     }
+
+    async componentDidMount() {
+        this.sala()
+        // this.equipamento()
+        //this.salasequipamento()
+    }
+
+    sala = () => {
+        axios.get("http://localhost:5000/api/salas", {
+            headers : {
+                "Authorization" : "Bearer " + localStorage.getItem("user-token")
+            }
+        })
+        .then(response => {
+            this.setState({sala : response.data})
+            return response.data
+        })
+        .then(x => {
+            let a = []
+            x.map(sala => {
+                axios.get("http://localhost:5000/api/salaequipamento/"+sala.idSala, {
+                    headers : {
+                        "Authorization" : "Bearer " + localStorage.getItem("user_token")
+                    }
+                })
+                .then(response => {
+                    sala.Equipamentos = response.data
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+                a.push(sala)
+                return true
+            })
+            return a
+        })
+        .then(x => {
+            this.setState({sala : x})
+            return "apolinario"
+        })
+        .then(x => console.log(this.state.sala))
+        .catch(error => {
+            console.log(error)
+        })
+        
+
+        
+    }
+    
+    // equipamento = () => {
+    //     axios.get("http://localhost:5000/api/equipamento", {
+    //         headers : {
+    //             "Authorization" : "Bearer " + localStorage.getItem("user-token")
+    //         }
+    //     })
+    //     .then(response => {
+    //         this.setState({equipamento : response.data})
+    //     })
+    //     .catch(error => {
+    //         console.log(error)
+    //     })
+    // }
+
+    // salasequipamento = () => {
+    //     axios.get("http://localhost:5000/equipamentos", {
+    //         headers : {
+    //             "Authorization" : "Bearer " + localStorage.getItem("user-token")
+    //         }
+    //     })
+    //     .then(response => {
+    //         this.setState({salasEquipamento : response.data})
+    //     })
+    //     .catch(error => {
+    //         console.log(error)
+    //     })
+    // }
 
     
     render() {
@@ -45,144 +125,31 @@ class Salas extends Component {
                     </div>
 
                     <div className="salas-lista">
+                        {this.state.sala.map(x => {
+                            return <div className="salas-lista-card" key={x.idSala}>
+                                        <button onClick={() => this.setState({isModalOpenInfo : true, idInfo : x.idSala})} className="salas-card-click">
+                                            <div className="salas-card-btn-lateral">
+                                                <img draggable="false" src={icon} />
+                                            </div>
 
-                        <div className="salas-lista-card">
-                            <button className="salas-card-click">
-                                <div className="salas-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="salas-card-text">
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
+                                            <div className="salas-card-text">
+                                                <div className="salas-card-text-item">
+                                                    <span className="salas-card-text-title">Sala</span>
+                                                    <p className="salas-card-text-content">{x.nomeSala}</p>
+                                                </div>
+                                                <div className="salas-card-text-item">
+                                                    <span className="salas-card-text-title">Andar</span>
+                                                    <p className="salas-card-text-content">{x.Andar}</p>
+                                                </div>
+                                                <div className="salas-card-text-item">
+                                                    <span className="salas-card-text-title">Metragem</span>
+                                                    <p className="salas-card-text-content">{x.metragem}m²</p>
+                                                </div>
+                                            </div>
+                                        </button>
                                     </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Andar</span>
-                                        <p className="salas-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Metragem</span>
-                                        <p className="salas-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="salas-lista-card">
-                            <button onClick={() => this.setState({isModalOpenInfo : true})} className="salas-card-click">
-                                <div className="salas-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="salas-card-text">
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Andar</span>
-                                        <p className="salas-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Metragem</span>
-                                        <p className="salas-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="salas-lista-card">
-                            <button className="salas-card-click">
-                                <div className="salas-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="salas-card-text">
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Andar</span>
-                                        <p className="salas-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Metragem</span>
-                                        <p className="salas-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="salas-lista-card">
-                            <button className="salas-card-click">
-                                <div className="salas-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="salas-card-text">
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Andar</span>
-                                        <p className="salas-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Metragem</span>
-                                        <p className="salas-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="salas-lista-card">
-                            <button className="salas-card-click">
-                                <div className="salas-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="salas-card-text">
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Andar</span>
-                                        <p className="salas-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Metragem</span>
-                                        <p className="salas-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className="salas-lista-card">
-                            <button className="salas-card-click">
-                                <div className="salas-card-btn-lateral">
-                                    <img draggable="false" src={icon} />
-                                </div>
-
-                                <div className="salas-card-text">
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Sala</span>
-                                        <p className="salas-card-text-content">Informática</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Andar</span>
-                                        <p className="salas-card-text-content">Térreo</p>
-                                    </div>
-                                    <div className="salas-card-text-item">
-                                        <span className="salas-card-text-title">Metragem</span>
-                                        <p className="salas-card-text-content">14m²</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
+                        })}
+                        
 
                     </div>
                 </div>
@@ -220,7 +187,12 @@ class Salas extends Component {
 
                                     <div className="modal-card-content-info-header-text-nome">
                                         <img src={sala} draggable="false" />
-                                        <p>Sala de Informática</p>
+                                        <p>{this.state.sala.map(x => {
+                                            if(x.idSala == this.state.idInfo) {
+                                                return x.nomeSala
+                                            }
+                                            return ""
+                                            })}</p>
                                     </div>
                                 </div>
 
@@ -244,30 +216,37 @@ class Salas extends Component {
                                 </div>
 
                                 <div className="modal-card-content-info-lista-equipamentos-lista">
+                                    {this.state.sala.map(x => {
+                                        if(x.idSala === this.state.idInfo) {
+                                            return x.Equipamentos.map(equipamento => {
+                                            return <div className="modal-card-content-info-lista-equipamentos-lista-card" key={equipamento.idEquipamento}>
+                                                <div className="modal-card-content-info-lista-equipamentos-lista-card-lateral">
+                                                    <img draggable="false" src={icon} />
+                                                </div>
 
-                                    <div className="modal-card-content-info-lista-equipamentos-lista-card">
-                                        <div className="modal-card-content-info-lista-equipamentos-lista-card-lateral">
-                                            <img draggable="false" src={icon} />
-                                        </div>
+                                                <div className="modal-card-content-info-lista-equipamentos-lista-card-text">
+                                                    <div className="modal-card-content-info-lista-equipamentos-lista-card-text-item">
+                                                        <p className="modal-card-content-info-lista-equipamentos-lista-card-text-item-title">Equipamento</p>
+                                                        <p className="modal-card-content-info-lista-equipamentos-lista-card-text-item-sub">{console.log(equipamento.nomeEquipamento)}</p>
+                                                    </div>
 
-                                        <div className="modal-card-content-info-lista-equipamentos-lista-card-text">
-                                            <div className="modal-card-content-info-lista-equipamentos-lista-card-text-item">
-                                                <p className="modal-card-content-info-lista-equipamentos-lista-card-text-item-title">Equipamento</p>
-                                                <p className="modal-card-content-info-lista-equipamentos-lista-card-text-item-sub">Cadeira de Escritório</p>
+                                                    <div className="modal-card-content-info-lista-equipamentos-lista-card-text-item">
+                                                        <p className="modal-card-content-info-lista-equipamentos-lista-card-text-item-title">N° Patrimônio</p>
+                                                        <p className="modal-card-content-info-lista-equipamentos-lista-card-text-item-sub">{equipamento.numeroPatrimonio}</p>
+                                                    </div>
+
+                                                    <div className="modal-card-content-info-lista-equipamentos-lista-card-text-item">
+                                                        {/* <p className="modal-card-content-info-lista-equipamentos-lista-card-text-item-title">Situação</p> */}
+                                                        <p className={"modal-card-content-info-lista-equipamentos-lista-card-text-item-sub-situacao-" + !!equipamento.situacao ? "enable" : "disable"}>{!!equipamento.situacao ? "Disponivel" : "Indisponivel"}</p>
+                                                    </div>
+                                                    
+                                                </div>
                                             </div>
-
-                                            <div className="modal-card-content-info-lista-equipamentos-lista-card-text-item">
-                                                <p className="modal-card-content-info-lista-equipamentos-lista-card-text-item-title">N° Patrimônio</p>
-                                                <p className="modal-card-content-info-lista-equipamentos-lista-card-text-item-sub">13200001</p>
-                                            </div>
-
-                                            <div className="modal-card-content-info-lista-equipamentos-lista-card-text-item">
-                                                {/* <p className="modal-card-content-info-lista-equipamentos-lista-card-text-item-title">Situação</p> */}
-                                                <p className="modal-card-content-info-lista-equipamentos-lista-card-text-item-sub-situacao-disable">Indisponível</p>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
+                                            })
+                                        }
+                                        return ""
+                                    })}
+                                    
 
                                     <div className="modal-card-content-info-lista-equipamentos-lista-card">
                                         <div className="modal-card-content-info-lista-equipamentos-lista-card-lateral">
@@ -369,6 +348,7 @@ class Salas extends Component {
                                 </div>
                             </div>
                         </div>
+                        {this.state.sala.map(x => true)}
                     </div>
                 </Modal>
 
